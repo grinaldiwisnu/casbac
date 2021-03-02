@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Casbac</string>
+    <string name="subtitle">Instant Reward App</string>
+    <string name="credit">Designed By Grinaldi</string>
+    <string name="product_name">Product name</string>
+    <string name="description_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="button_text">Detail Produk</string>
+    <string name="about_us">About Us</string>
+    <string name="home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
