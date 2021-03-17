@@ -32,6 +32,15 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/product_price"
+            android:textSize="14sp"
+            android:id="@+id/price_content"
+            android:paddingBottom="5sp"
+            android:textStyle="normal"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/description_content"
             android:textSize="12sp"
             android:id="@+id/description_content"

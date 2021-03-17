@@ -5,6 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.casbac.adapter.ProductAdapter
+import com.example.casbac.model.Product
+import com.example.casbac.model.ProductData
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +24,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class HomeFragment : Fragment() {
+    private lateinit var rvProduct: RecyclerView
+    private lateinit var adapter: ProductAdapter
+    private var listProduct: ArrayList<Product> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,5 +50,14 @@ class HomeFragment : Fragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvProduct = getView()!!.findViewById(R.id.recycler_widget)
+        listProduct.addAll(ProductData.listData)
+        adapter = ProductAdapter(listProduct, context)
+        rvProduct.layoutManager = LinearLayoutManager(activity)
+        rvProduct.adapter = adapter
     }
 }

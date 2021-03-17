@@ -4,30 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.casbac.adapter.ProductAdapter
+import com.example.casbac.model.Product
+import com.example.casbac.model.ProductData
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private var content: FrameLayout? = null
-    private var navigation: BottomNavigationView? = null
-
-    private val mOnNavigationItemSelectedListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> {
-                    val fragment = HomeFragment.newInstance()
-                    addFragment(fragment)
-
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.profile -> {
-                    val fragment = ProfileFragment()
-                    addFragment(fragment)
-
-                    return@OnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
 
     private fun addFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().setCustomAnimations(
@@ -39,8 +23,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navigation?.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        val fragment = HomeFragment.newInstance()
+        val fragment = HomeFragment()
         addFragment(fragment)
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        navView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> {
+                    val home = HomeFragment()
+                    addFragment(home)
+                }
+                R.id.profile -> {
+                    val profile = ProfileFragment()
+                    addFragment(profile)
+                }
+            }
+            true
+        }
     }
 }
